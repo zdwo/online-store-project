@@ -1,0 +1,21 @@
+body {
+  background: #7d92fd;
+  background: radial-gradient(circle, #7d92fd 0%, #ffc2cf 100%);
+}
+
+.nav {
+  background-color: whitesmoke;
+  padding: 30px;
+}
+
+.nav .link {
+  text-decoration: none;
+  color: #7d92fd;
+}
+
+.product-pic {
+  height: 200px;
+  width: 160px;
+  border: 15px solid white;
+}
+/*# sourceMappingURL=App.css.map */

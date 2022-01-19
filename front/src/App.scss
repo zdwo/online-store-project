@@ -1,0 +1,21 @@
+body {
+    background: rgb(125,146,253);
+    background: radial-gradient(circle, rgba(125,146,253,1) 0%, rgba(255,194,207,1) 100%);
+}
+
+.nav {
+    background-color: whitesmoke;
+    padding: 30px;
+    .link {
+        text-decoration: none;
+        color: rgb(125,146,253);
+    }
+}
+
+.product-pic {
+    height: 200px;
+    width: 160px;
+    // scale: ;
+    border: 15px solid white;
+    // width: 160px;
+}
