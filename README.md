@@ -1,2 +1,2 @@
 Dwojak Zofia
-Simple online store
+online store
