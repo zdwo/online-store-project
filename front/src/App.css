@@ -1,16 +1,66 @@
 body {
-  background: #7d92fd;
-  background: radial-gradient(circle, #7d92fd 0%, #ffc2cf 100%);
+  background: #efefef;
 }
 
 .nav {
-  background-color: whitesmoke;
-  padding: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+  background-color: #efefef;
+  padding: 10px 20px;
 }
 
 .nav .link {
   text-decoration: none;
-  color: #7d92fd;
+  color: #2b5293;
+  font-weight: 500;
+}
+
+.nav img {
+  margin: 15px;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  height: 100px;
+}
+
+.nav .menu {
+  margin: 0 30px;
+}
+
+.nav .menu:hover {
+  cursor: pointer;
+}
+
+.nav .menu-list {
+  margin-left: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  gap: 70px;
+  font-size: 20px;
+}
+
+.nav .cart-icon {
+  margin-left: auto;
+  margin-right: 25px;
+}
+
+.home-photo-cont {
+  background: white;
+  /* fallback for old browsers */
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.493)), to(rgba(201, 186, 255, 0.342))), url("./images/photo-1556741533-6e6a62bd8b49.jpg") 0 -55px;
+  background: linear-gradient(rgba(255, 255, 255, 0.493), rgba(201, 186, 255, 0.342)), url("./images/photo-1556741533-6e6a62bd8b49.jpg") 0 -55px;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: 100%;
+  -webkit-filter: blur(2.5px);
+          filter: blur(2.5px);
+  height: 700px;
 }
 
 .product-pic {

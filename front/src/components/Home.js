@@ -63,7 +63,7 @@ function Home() {
 
     return (
     <div>
-        {products.map(p => p.name)}
+        <div className="home-photo-cont"></div>
         {/* <div>
             <select className="form-select" onChange={(e) => setSortType(e.target.value)}>
                 <option defaultValue="Sortuj">Sortuj</option>
