@@ -68,4 +68,19 @@ body {
   width: 160px;
   border: 15px solid white;
 }
+
+.product-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.product-list .product-name {
+  overflow-wrap: break-word;
+}
 /*# sourceMappingURL=App.css.map */

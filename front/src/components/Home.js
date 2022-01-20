@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faArrowDown, faFilter, faShoppingBasket, faShoppingCart, faSort, faUser } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Products from "./Products";
@@ -64,6 +67,9 @@ function Home() {
     return (
     <div>
         <div className="home-photo-cont"></div>
+        <button className="home-btn">
+            <div>BE COOL</div>
+        </button>
         {/* <div>
             <select className="form-select" onChange={(e) => setSortType(e.target.value)}>
                 <option defaultValue="Sortuj">Sortuj</option>
