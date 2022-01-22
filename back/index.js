@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 const products = require('./routes/products');
-const cart = require('./routes/cart');
+const user = require('./routes/user')
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
+const session = require('express-session')
+
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -13,7 +16,14 @@ app.use(function (req, res, next) {
 
 app.use(express.json());
 app.use('/products', products);
-app.use('/cart', cart);
+app.use(bodyParser.json())
+app.use(session({
+    secret: 's3cr3t',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {secure: false, maxAge: new Date(new Date().getTime() + 60*60*1000)}
+}))
+app.use('/user', user)
 
 
 require('dotenv').config();

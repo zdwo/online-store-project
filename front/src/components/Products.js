@@ -13,10 +13,7 @@ const Products = ({ products }) => {
 
     const updateCart = p => () => {
         setCartP([...cartP, p])
-        // setCartP([...cartP, p])
-        // .then(() => Cookies.set('products', JSON.stringify(cartP), {expires: 7}))
    }
-   console.log(cartP)
 
 
     useEffect(() => {
@@ -25,29 +22,20 @@ const Products = ({ products }) => {
 
 
     const createCookie = () => {
-        cartP.length===0 ? Cookies.set('cart', cartP) : Cookies.set('cart', JSON.stringify(cartP))
+        cartP.length===0 ? Cookies.set('cart', cartP, {expires: new Date(new Date().getTime() + 60*60*1000)}) : Cookies.set('cart', JSON.stringify(cartP), {expires: new Date(new Date().getTime() + 60*60*1000)})
     }
-
-//     function setCookie(cname, cvalue) {
-//      var d = new Date();
-//      d.setTime(d.getTime() + (30*60*1000));
-//      var expires = "expires="+d.toUTCString();
-//      document.cookie = cname + "=" + cvalue + "; " + expires;
-//  }
 
 
 
     return (
 
           <div className="product-list">
-               {/* <button onClick={createCookie}>ADD TO CART</button> */}
-               {products.map(product => <div key={product.id}>
+               {products.map(product => <div key={product._id}>
                          <img className="product-pic" src={product.picture} alt="img"/>
                          <p className="product-name" onClick={() => history.push(`/${product.id}`)}>{product.name}</p>
                          <p>{'\u2605'} {product.rating}</p>
                          <button onClick={updateCart(product.name)}>ADD TO CART</button>
                </div>)} 
-               {/* {cookies.product && <h1>{cookies.product}</h1>} */}
         </div>
     )
 }

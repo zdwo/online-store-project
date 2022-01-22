@@ -1,31 +1,61 @@
 import './App.scss';
-import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Link, Switch, Route, BrowserRouter as Router, Redirect } from "react-router-dom";
 import Home from './components/Home';
 import Cart from './components/Cart';
+import Signup from './components/Signup';
 import logo from './logos/cool-logos.jpeg'; 
 import 'animate.css'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faFilter, faShoppingBasket, faShoppingCart, faSort, faUser } from "@fortawesome/free-solid-svg-icons";
-import Cookies from 'js-cookie';
+import { faShoppingBasket, faUser } from "@fortawesome/free-solid-svg-icons";
+import UserPage from './components/UserPage';
+import Auth from './utils/Auth'
+import { isSignedIn } from './components/auth-api';
+import Signin from './components/Signin'
 
 library.add(faShoppingBasket);
 
 
+const RouteReg = ({component: Component, ...rest}) => {
+  const auth = React.useContext(Auth)
+  return <Route {...rest} render={props => !auth.auth ? <Component {...props} /> : <Redirect to='/user' />} />
+}
+
+const RouteProtected = ({component: Component, ...rest}) => {
+  const auth = React.useContext(Auth)
+  return <Route {...rest} render={props => auth.auth ? <Component {...props} /> : <Redirect to='/signin' />} />
+}
+
 function App() {
 
+  const [auth, setAuth] = useState(false)
+
+  const readSession = async () => {
+    const res = await isSignedIn()
+    if (res.data.auth) {
+      setAuth(true)
+    }
+  }
+  
+  useEffect(() => {
+    readSession()
+  }, [])
 
   return (
     <div>
-      <Router>
-        <Navbar />
-        <Switch>
-              <Route exact path='/' component={Home}/>
-              <Route path='/cart' component={Cart} />
-              <Route path='/login' />
-        </Switch>
-      </Router>
+      <Auth.Provider value={{auth, setAuth}}>
+        <Router>
+          <Navbar />
+          <Switch>
+                <Route exact path='/' component={Home}/>
+                <Route path='/cart' component={Cart} />
+                <RouteProtected path='/user' component={UserPage} />
+                <RouteReg path='/signin' component={Signin} />
+                <RouteReg path='/signup' component={Signup} />
+          </Switch>
+        </Router>
+      </Auth.Provider>
     </div>
   );
 }
@@ -58,7 +88,7 @@ function Navbar() {
         </ul>
       </div> : null}
       <div className='cart-icon'>
-        <Link className='link' to='/login'><FontAwesomeIcon icon={faUser} /></Link>
+        <Link className='link' to='/user'><FontAwesomeIcon icon={faUser} /></Link>
         <Link className='link' to='/cart'><FontAwesomeIcon icon={faShoppingBasket} /></Link>
       </div>
     </div>

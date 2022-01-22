@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
 
-const Collection = require('../models/Product');
+const Product = require('../models/Product');
 
 router.get('/', async (req, res) => {
   try {
-    const result = await Collection.find({});
+    const result = await Product.find({});
     return res.json(result);
   } catch (err) {
     return res.status(500).send(err);
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 router.get('/electronics', async (req, res) => {
   try {
-    const result = await Collection.find({category: "electronics"});
+    const result = await Product.find({category: "electronics"});
     return res.json(result);
   } catch (err) {
     return res.status(500).send(err);
@@ -23,7 +23,7 @@ router.get('/electronics', async (req, res) => {
 
 router.get('/clothing', async (req, res) => {
   try {
-    const result = await Collection.find({category: "clothing"});
+    const result = await Product.find({category: "clothing"});
     return res.json(result);
   } catch (err) {
     return res.status(500).send(err);
@@ -32,7 +32,7 @@ router.get('/clothing', async (req, res) => {
 
 router.get('/jewelery', async (req, res) => {
   try {
-    const result = await Collection.find({category: "jewelery"});
+    const result = await Product.find({category: "jewelery"});
     return res.json(result);
   } catch (err) {
     return res.status(500).send(err);
@@ -42,7 +42,7 @@ router.get('/jewelery', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const id = req.params.id;
-    const result = await Collection.findById(id);
+    const result = await Product.findById(id);
     return res.json(result);
   } catch (err) {
     return res.status(500).send(err);
@@ -51,7 +51,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const data = new Collection({ ...req.body });
+    const data = new Product({ ...req.body });
     const result = await data.save();
     return res.json(result);
   } catch (err) {
@@ -63,8 +63,8 @@ router.put('/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const data = req.body;
-    await Collection.findByIdAndUpdate(id, data);
-    const result = await Collection.findById(id);
+    await Product.findByIdAndUpdate(id, data);
+    const result = await Product.findById(id);
     return res.send(result);
   } catch (err) {
     return res.status(500).send(err);
@@ -74,7 +74,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const id = req.params.id;
-    await Collection.findByIdAndDelete(id);
+    await Product.findByIdAndDelete(id);
     return res.send(id);
   } catch {
     return res.status(500).send(err);
