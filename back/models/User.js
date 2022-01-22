@@ -26,6 +26,19 @@ userSchema.pre('save', async function(next) {
     next()
 })
 
+userSchema.pre('findByIdAndUpdate', async function () {
+    let update = {...this.getUpdate()};
+  
+    // Only run this function if password was modified
+    if (update.password){
+  
+    // Hash the password
+    const salt = genSaltSync();
+    update.password = await hash(this.getUpdate().password, salt);
+    this.setUpdate(update);
+    }
+  })
+
 const User = model('User', userSchema)
 
 module.exports = User

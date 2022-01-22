@@ -2,53 +2,48 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 
 const User = require('../models/User');
-const { route } = require('./products');
 
 router.post('/signin', async (req, res) => {
-    // const email = req.body.email
-    // const psw = req.body.password
     const {email, password} = req.body
     const user = await User.findUser(email, password)
     if (user) {
         req.session.user = user._id
         res.json({
-            msg: 'Welcome!',
             auth: true
         })
     } else {
         res.json({
-            msg: 'Unable to login.',
             auth: false
         })
     }
 })
 
-router.post('/signup', (req, res) => {
-    const user = new User(req.body)
-    req.session.user = user._id
-    user.save().then((result) => {
-        res.json({
-            msg: 'Account created!',
-            auth: true
+router.post('/signup', async (req, res) => {
+    const email = req.body.email
+    const userUnique = await User.findOne({email})
+    if (!userUnique) {
+        const user = new User(req.body)
+        req.session.user = user._id
+        user.save().then((result) => {
+            res.json({
+                auth: true
+            })
+        }).catch((err) => {
+            res.json({
+                auth: false
+            })
         })
-    }).catch((err) => {
-        res.json({
-            msg: 'Unable to create the account.',
-            auth: false
-        })
-    })
+    } else res.send("Email already exists.")
 })
 
 router.get('/signedin', (req, res) => {
     if (req.session.user) {
         return res.json({
-            auth: true,
-            msg: "You are logged in."
+            auth: true
         })
     }
     return res.json({
-        auth: false,
-        msg: "You are not loggen in."
+        auth: false
     })
 })
 
@@ -59,5 +54,45 @@ router.get('/signout', (req, res) => {
     })
 })
 
+router.get('/', async (req, res) => {
+    try {
+      const result = await User.find({});
+      return res.json(result);
+    } catch (err) {
+      return res.status(500).send(err);
+    }
+  });
+
+router.get('/:id', async (req, res) => {
+    try {
+      const id = req.params.id;
+      const result = await User.findById(id);
+      return res.json(result);
+    } catch (err) {
+      return res.status(500).send(err);
+    }
+  });
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        await User.findByIdAndDelete(id);
+        return res.send(id);
+      } catch {
+        return res.status(500).send(err);
+      }
+})
+
+router.put('/:id', async (req, res) => {
+    try {
+      const id = req.params.id;
+      const data = req.body;
+      await User.findByIdAndUpdate(id, data);
+      const result = await User.findById(id);
+      return res.send(result);
+    } catch (err) {
+      return res.status(500).send(err);
+    }
+  });
 
 module.exports = router;
