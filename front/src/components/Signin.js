@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import Cookies from 'js-cookie'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Auth from '../utils/Auth'
@@ -16,26 +16,33 @@ export default function Signin() {
         const res = await signin({email, password})
         if (res.data.auth) {
           auth.setAuth(true)
+          createCookie()
         }
     }
 
+    const createCookie = () => {
+      Cookies.set('user', email, {expires: new Date(new Date().getTime() + 60*60*1000)})
+  }
+
   return(
+    <div className='login-bg'>
     <div className="login-wrapper">
-      <h1>Please Log In</h1>
+      <h1>PLEASE LOG IN</h1>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="form__label">
           <p>Email</p>
-          <input type="text" onChange={e => setEmail(e.target.value)}/>
+          <input className='form__field' type="text" onChange={e => setEmail(e.target.value)}/>
         </label>
-        <label>
+        <label className="form__label">
           <p>Password</p>
-          <input type="password" onChange={e => setPassword(e.target.value)}/>
+          <input className='form__field' type="password" onChange={e => setPassword(e.target.value)}/>
         </label>
-        <div>
-          <button type="submit">Submit</button>
-          <Link to='/signup'>Don't have an account? Sign up.</Link>
+        <div className='login-d'>
+          <button type="submit">Log in</button>
+          <Link className='link link-form' to='/signup'>Don't have an account? Sign up.</Link>
         </div>
       </form>
+    </div>
     </div>
   )
 }

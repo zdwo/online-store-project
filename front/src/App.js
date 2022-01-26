@@ -13,6 +13,15 @@ import UserPage from './components/UserPage';
 import Auth from './utils/Auth'
 import { isSignedIn } from './components/auth-api';
 import Signin from './components/Signin'
+import Clothing from './components/Clothing'
+import Makeup from './components/Makeup';
+import Jewelery from './components/Jewelery';
+import Details from './components/ProductDetails'
+import Promos from './components/Promos';
+import Edit from './components/EditProduct';
+// import {Connector} from 'mqtt-react-hooks'
+// import Status from './components/Status';
+
 
 library.add(faShoppingBasket);
 
@@ -37,22 +46,34 @@ function App() {
       setAuth(true)
     }
   }
-  
+
   useEffect(() => {
     readSession()
   }, [])
 
+
+
+
   return (
     <div>
+      {/* <Connector brokerUrl="wss://test.mosquitto.org:1884"> */}
+        {/* <Status /> */}
+      {/* </Connector> */}
       <Auth.Provider value={{auth, setAuth}}>
         <Router>
           <Navbar />
           <Switch>
                 <Route exact path='/' component={Home}/>
+                <Route exact path='/promos' component={Promos}/>
                 <Route path='/cart' component={Cart} />
                 <RouteProtected path='/user' component={UserPage} />
                 <RouteReg path='/signin' component={Signin} />
                 <RouteReg path='/signup' component={Signup} />
+                <Route path='/clothing' component={Clothing}/>
+                <Route path='/jewelery' component={Jewelery}/>
+                <Route path='/beauty' component={Makeup}/>
+                <Route path='/:id/edit' component={Edit} />
+                <Route path='/:id' component={Details}/>
           </Switch>
         </Router>
       </Auth.Provider>
@@ -67,7 +88,7 @@ function Navbar() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setOpen(false)
-    }, 5000);
+    }, 10000);
     return () => clearTimeout(timer)
   })
 
@@ -82,9 +103,9 @@ function Navbar() {
       <div className="menu" onClick={handleClick}>MENU</div>
       {open ? <div>
         <ul className='menu-list'>
-          <li className="animate__animated animate__slideInLeft">ELECTRONICS</li>
-          <li className="animate__animated animate__slideInLeft">JEWELERY</li>
-          <li className="animate__animated animate__slideInLeft">CLOTHING</li>
+          <li className="animate__animated animate__slideInLeft"><Link className='link' to='/beauty'>BEAUTY</Link></li>
+          <li className="animate__animated animate__slideInLeft"><Link className='link' to='/jewelery'>JEWELERY</Link></li>
+          <li className="animate__animated animate__slideInLeft"><Link className='link' to='/clothing'>CLOTHING</Link></li>
         </ul>
       </div> : null}
       <div className='cart-icon'>

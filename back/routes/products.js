@@ -12,9 +12,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/electronics', async (req, res) => {
+router.get('/makeup', async (req, res) => {
   try {
-    const result = await Product.find({category: "electronics"});
+    const result = await Product.find({category: "makeup"});
     return res.json(result);
   } catch (err) {
     return res.status(500).send(err);

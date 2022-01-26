@@ -1,3 +1,4 @@
+import Cookies from "js-cookie"
 import React, { useContext } from "react"
 import Auth from "../utils/Auth"
 import { signout } from "./auth-api"
@@ -8,6 +9,7 @@ function UserPage() {
     const handleLogout = async () => {
         const res = await signout()
         auth.setAuth(res.data.auth)
+        Cookies.remove('user')
     }
 
     return (

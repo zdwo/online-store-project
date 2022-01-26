@@ -1,0 +1,15 @@
+{
+  "promos": [{
+    "id": 0,
+    "description": "2+2 FREE"
+  }, {
+    "id": 1,
+    "description": "ALL BAGS -20%"
+  }, {
+    "id": 2,
+    "description": "SIGN UP FOR A NEWSLETTER FOR ADDITIONAL -10%"
+  }, {
+    "id": 3,
+    "description": "BUY ANYTHING FROM ~designer~ TO GET A GIFT"
+  }]
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Cookies from 'js-cookie';
+import { Link } from "react-router-dom";
 
 const Products = ({ products }) => {
 
@@ -31,9 +32,9 @@ const Products = ({ products }) => {
 
           <div className="product-list">
                {products.map(product => <div key={product._id}>
-                         <img className="product-pic" src={product.picture} alt="img"/>
+                        <Link className="link" to={`/${product._id}`}><img className="product-pic" src={product.picture} alt="img"/>
                          <p className="product-name" onClick={() => history.push(`/${product.id}`)}>{product.name}</p>
-                         <p>{'\u2605'} {product.rating}</p>
+                         <p>{'\u2605'} {product.rating}</p></Link>
                          <button onClick={updateCart(product.name)}>ADD TO CART</button>
                </div>)} 
         </div>
