@@ -10,9 +10,9 @@ function Home() {
         const es = new EventSource("http://localhost:5000/promos");
         
         es.addEventListener("message", function(event) {
-            const lastElement = document.querySelector("li")
+            const lastElement = document.getElementById("promo").querySelector("li")
             const newElement = document.createElement("li");
-            const eventList = document.getElementById("list");
+            const eventList = document.getElementById("promo");
         
             newElement.textContent = event.data;
             if (eventList) {
@@ -34,9 +34,8 @@ function Home() {
     <div>
         <div className="home-photo-cont"></div>
         <button className="home-btn">
-            <ul id="list"><li></li></ul>
+            <ul id="promo"></ul>
         </button>
-        {/* <Products products={products} /> */}
         <Newsletter />
     </div>
     )
