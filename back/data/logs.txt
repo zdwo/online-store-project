@@ -1,0 +1,7 @@
+| LOGOUT | user1@gmail.com | Sat Jan 29 2022 18:07:07 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGIN | user1@gmail.com | Sat Jan 29 2022 18:07:13 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGOUT | user1@gmail.com | Sat Jan 29 2022 18:07:15 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGIN | user3@gmail.com | Sat Jan 29 2022 18:07:20 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGOUT | user3@gmail.com | Sat Jan 29 2022 18:07:21 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGIN | user3@gmail.com | Sat Jan 29 2022 18:07:27 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGOUT | user3@gmail.com | Sat Jan 29 2022 18:07:28 GMT+0100 (czas środkowoeuropejski standardowy) |

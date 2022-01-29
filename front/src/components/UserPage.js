@@ -45,7 +45,8 @@ function UserPage() {
 
     const auth = useContext(Auth)
     const handleLogout = async () => {
-        const res = await signout()
+        const e = Cookies.get()['user']
+        const res = await signout({e})
         auth.setAuth(res.data.auth)
         Cookies.remove('user')
     }

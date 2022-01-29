@@ -15,8 +15,8 @@ const isSignedIn = async () => {
     return res
 }
 
-const signout = async () => {
-    const res = await axios.get('/user/signout')
+const signout = async (user) => {
+    const res = await axios.post('/user/signout', user)
     return res
 }
 

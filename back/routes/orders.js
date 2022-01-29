@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
+const fs = require('fs')
 
 const Order = require('../models/Order');
 
@@ -26,6 +27,7 @@ router.post('/', async (req, res) => {
   try {
     const data = new Order({ ...req.body });
     const result = await data.save();
+    fs.appendFile('./data/orders.txt', '| ORDER NO ' + result._id + ' | ' + req.body.user + ' | ' + req.body.products +  ' | ' + new Date()  + ' |\n', err => { err ? console.log(err) : {}})
     return res.json(result);
   } catch (err) {
     return res.status(500).send(err);

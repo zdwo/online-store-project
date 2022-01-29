@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Chat from "./Chat";
 import Newsletter from "./Newsletter";
 
 function Home() {
 
     const [products, setProducts] = useState([])
+    const [open, setOpen] = useState(false)
 
     window.addEventListener("load", function (event) { 
         const es = new EventSource("http://localhost:5000/promos");
@@ -29,6 +31,10 @@ function Home() {
         .catch(error => console.log(error))
     },[])
 
+    const openChat = () => {
+        setOpen(!open)
+    }
+
 
     return (
     <div>
@@ -36,6 +42,8 @@ function Home() {
         <button className="home-btn">
             <ul id="promo"></ul>
         </button>
+        {open ? <Chat /> : null}
+        <button onClick={openChat}>+</button>
         <Newsletter />
     </div>
     )

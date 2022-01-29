@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
+const fs = require('fs')
 
 const User = require('../models/User');
 
@@ -8,6 +9,7 @@ router.post('/signin', async (req, res) => {
     const user = await User.findUser(email, password)
     if (user) {
         req.session.user = user._id
+        fs.appendFile('./data/logs.txt', '| LOGIN' + ' | ' + email + ' | ' + new Date()  + ' |\n', err => { err ? console.log(err) : {}})
         res.json({
             auth: true
         })
@@ -47,11 +49,13 @@ router.get('/signedin', (req, res) => {
     })
 })
 
-router.get('/signout', (req, res) => {
+router.post('/signout', (req, res) => {
+    const email = req.body.e
     req.session.destroy()
     res.json({
         auth: false
     })
+    fs.appendFile('./data/logs.txt', '| LOGOUT' + ' | ' + email + ' | ' + new Date()  + ' |\n', err => { err ? console.log(err) : {}})
 })
 
 router.get('/', async (req, res) => {
