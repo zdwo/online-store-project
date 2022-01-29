@@ -51,11 +51,11 @@ router.get('/signedin', (req, res) => {
 
 router.post('/signout', (req, res) => {
     const email = req.body.e
+    fs.appendFile('./data/logs.txt', '| LOGOUT' + ' | ' + email + ' | ' + new Date()  + ' |\n', err => { err ? console.log(err) : {}})
     req.session.destroy()
     res.json({
         auth: false
     })
-    fs.appendFile('./data/logs.txt', '| LOGOUT' + ' | ' + email + ' | ' + new Date()  + ' |\n', err => { err ? console.log(err) : {}})
 })
 
 router.get('/', async (req, res) => {
@@ -97,6 +97,21 @@ router.put('/:id', async (req, res) => {
     } catch (err) {
       return res.status(500).send(err);
     }
-  });
+});
+
+router.patch('/:id', async (req, res) => {
+  const update = req.body;
+  const id = req.params.id;
+  try {
+    const user = await User.findByIdAndUpdate(id, update, {new: true})
+    if (!user) {
+      return res.status(404).send()
+    }
+    res.send(user)
+  } catch (err) {
+    res.send(err)
+  }
+});
+  
 
 module.exports = router;

@@ -7,10 +7,14 @@ import { signout } from "./auth-api"
 function UserPage() {
 
     const [orders, setOrders] = useState([])
-    const [edit, setEdit] = useState('')
     const [users, setUsers] = useState([])
+    const [edit, setEdit] = useState('')
     const [email, setEmail] = useState('')
-    const [products, setProducts] = useState([])
+    
+    const [open, setOpen] = useState(false)
+    const [user, setUser] = useState('')
+    const [id, setId] = useState('')
+    const [userEmail, setUserEmail] = useState('')
 
     useEffect(() => {
         axios.get('http://localhost:5000/orders')
@@ -24,11 +28,20 @@ function UserPage() {
         .catch (error => console.log(error))
       }, [users])
 
+    useEffect(() => {
+        const e = Cookies.get()['user']
+        setUser(e)
+        users.map(u => u.email === e ? setId(u._id) : null)
+    }, [users])
+
 
     const handleDel = (id) => {
-        axios.delete(`http://localhost:5000/orders/${id}`)
-        .then(() => alert('Order deleted.'))
-        .catch(error => console.log(error))
+        const c = window.confirm('Are you sure you want to delete this order?')
+        if (c) {
+            axios.delete(`http://localhost:5000/orders/${id}`)
+            .then(() => alert('Order deleted.'))
+            .catch(error => console.log(error))
+        } else {}
     }
 
     const editButton = (id) => {
@@ -43,6 +56,29 @@ function UserPage() {
         .catch(error => console.log(error))
     }
 
+    const editEmail = () => {
+        setOpen(true)
+    }
+
+    const handleEditEmail = (e) => {
+        e.preventDefault()
+        axios.patch(`http://localhost:5000/user/${id}`, {email: userEmail})
+        .then(() => alert('Email successfully updated!'))
+        .then(() => Cookies.set('user', userEmail, {expires: new Date(new Date().getTime() + 60*60*1000)}))
+        .then(() => setOpen(false))
+        .catch(error => console.log(error))
+    }
+
+    const handleUserDelete = () => {
+        const c = window.confirm('Are you sure you want to delete your account?')
+        if (c) {
+            axios.delete(`http://localhost:5000/user/${id}`)
+            .then(() => alert('Account deleted.'))
+            .then(() => handleLogout())
+            .catch(error => console.log(error))
+        } else {}
+    }
+
     const auth = useContext(Auth)
     const handleLogout = async () => {
         const e = Cookies.get()['user']
@@ -53,8 +89,13 @@ function UserPage() {
 
     return (
         <div>
-            <h1>Uszanowanko</h1>
+            <h1>Uszanowanko {user}</h1>
             <button onClick={handleLogout}>Logout</button>
+            <div>
+                <button onClick={editEmail}>EDIT EMAIL</button>
+                {open ? <form onSubmit={e => handleEditEmail(e)}><input defaultValue={user} type='text' onChange={(e) => setUserEmail(e.target.value)} /><button type="submit">OK</button></form> : null}
+                <button onClick={handleUserDelete}> DELETE ACCOUNT</button>
+            </div>
             <div>
                 {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? 
                     <ul>
@@ -69,9 +110,9 @@ function UserPage() {
                             <p>{o._id}</p>
                             <form onSubmit={(e) => handleSubmit(e, o._id)}>
                                 <input defaultValue={o.user} type="text" onChange={e => setEmail(e.target.value)} />
-                                {/* <ul>{o.products.map(p => <input defaultValue={p} type="text" onChange={e => setProducts([...products, e.target.value])}/>)}</ul> */}
                                 <ul>{o.products.map(p => <li>{p}</li>)}</ul>
                                 <button type="submit">OK</button>
+                                <button onClick={e => editButton('')}>CANCEL</button>
                             </form>
                         </li>
                         )}
