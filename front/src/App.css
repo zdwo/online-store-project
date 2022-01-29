@@ -455,6 +455,7 @@ body {
 }
 
 .cart-page button {
+  cursor: pointer;
   margin-right: 100px;
   padding: 20px;
   background: none;

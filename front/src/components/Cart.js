@@ -10,19 +10,34 @@ function Cart() {
 
   const [cart, setCart] = useState([])
   const [products, setProducts] = useState([])
+  const [user, setUser] = useState('')
   const history = useHistory()
 
   useEffect(() => {
     axios.get('http://localhost:5000/products')
     .then(response => setProducts(response.data))
     .catch(error => console.log(error))
-  })
+  }, [])
 
   useEffect(() => {
     if (Cookies.get()['cart']) {
       setCart(JSON.parse(Cookies.get()['cart']))
     } else {}
+    if (Cookies.get()['user']) {
+      setUser(Cookies.get()['user'])
+    } else {
+      setUser('guest')
+    }
   }, [])
+
+  const handleSubmit = () => {
+    console.log(cart)
+    axios.post('http://localhost:5000/orders', {user: user, products: cart})
+    .then(() => Cookies.remove('cart'))
+    .then(() => setCart([]))
+    .then(() => alert('Thank you for placing an order! You will soon receive a confimation email.'))
+    .catch(error => console.log(error))
+  }
 
 
     return (
@@ -34,9 +49,8 @@ function Cart() {
             <p className="cart-name" onClick={() => history.push(`/${pr._id}`)}>{pr.name}</p>
           </div> : null
           ))}
-          {/* {Cookies.get()['cart'] ? JSON.parse(Cookies.get()['cart']).map(p => <p>{p}</p>) : <p></p>} */}
         </div>
-        <button>Place an order <FontAwesomeIcon icon={faShoppingBag}/></button>
+        <button onClick={handleSubmit} disabled={!Cookies.get()['cart'] ? true : false}>Place an order <FontAwesomeIcon icon={faShoppingBag}/></button>
       </div>
     );
 }

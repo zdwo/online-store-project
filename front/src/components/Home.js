@@ -10,17 +10,18 @@ function Home() {
         const es = new EventSource("http://localhost:5000/promos");
         
         es.addEventListener("message", function(event) {
-         const lastElement = document.querySelector("li:last-child")
-         const newElement = document.createElement("li");
-         const eventList = document.getElementById("list");
-       
-         newElement.textContent = event.data;
-         if (eventList) {
+            const lastElement = document.querySelector("li")
+            const newElement = document.createElement("li");
+            const eventList = document.getElementById("list");
+        
+            newElement.textContent = event.data;
+            if (eventList) {
             if (!lastElement)  {eventList.appendChild(newElement)}
             else {eventList.replaceChild(newElement, lastElement)}
-         } else {}
+            } else {}
         });
-       });
+    });
+
 
     useEffect(() => {
         axios.get('http://localhost:5000/products')

@@ -44,6 +44,20 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+router.patch('/:id', async (req, res) => {
+  const update = req.body;
+  const id = req.params.id;
+  try {
+    const order = await Order.findByIdAndUpdate(id, update, {new: true})
+    if (!order) {
+      return res.status(404).send()
+    }
+    res.send(order)
+  } catch (err) {
+    res.send(err)
+  }
+});
+
 router.delete('/:id', async (req, res) => {
   try {
     const id = req.params.id;

@@ -8,7 +8,7 @@ import 'animate.css'
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faShoppingBasket, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBasket, faUser, faEnvelope, faEnvelopeOpen, faEnvelopeOpenText } from "@fortawesome/free-solid-svg-icons";
 import UserPage from './components/UserPage';
 import Auth from './utils/Auth'
 import { isSignedIn } from './components/auth-api';
@@ -19,9 +19,9 @@ import Jewelery from './components/Jewelery';
 import Details from './components/ProductDetails'
 import Promos from './components/Promos';
 import Edit from './components/EditProduct';
-// import {Connector} from 'mqtt-react-hooks'
-// import Status from './components/Status';
-
+import Cookies from 'js-cookie';
+import axios from 'axios';
+import NewsletterAdmin from './components/Newsletter-admin';
 
 library.add(faShoppingBasket);
 
@@ -66,6 +66,7 @@ function App() {
                 <Route exact path='/' component={Home}/>
                 <Route exact path='/promos' component={Promos}/>
                 <Route path='/cart' component={Cart} />
+                <Route path='/newsletter' component={NewsletterAdmin}/>
                 <RouteProtected path='/user' component={UserPage} />
                 <RouteReg path='/signin' component={Signin} />
                 <RouteReg path='/signup' component={Signup} />
@@ -84,6 +85,7 @@ function App() {
 function Navbar() {
 
   const [open, setOpen] = useState(false)
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -91,6 +93,12 @@ function Navbar() {
     }, 10000);
     return () => clearTimeout(timer)
   })
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/user')
+    .then(response => setUsers(response.data))
+    .catch (error => console.log(error))
+  }, [users])
 
   const handleClick = () => {
     setOpen(!open)
@@ -109,6 +117,7 @@ function Navbar() {
         </ul>
       </div> : null}
       <div className='cart-icon'>
+        {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? <Link className='link' to='/newsletter'><FontAwesomeIcon icon={faEnvelopeOpenText}/></Link> : null)}
         <Link className='link' to='/user'><FontAwesomeIcon icon={faUser} /></Link>
         <Link className='link' to='/cart'><FontAwesomeIcon icon={faShoppingBasket} /></Link>
       </div>
