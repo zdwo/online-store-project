@@ -454,18 +454,29 @@ body {
   display: flex;
 }
 
+.cart-page .btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 30px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 150px;
+  height: 100%;
+}
+
 .cart-page button {
+  width: 280px;
   cursor: pointer;
   margin-right: 100px;
   padding: 20px;
   background: none;
   height: 100%;
   font-size: 30px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 150px;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
   border: none;
   border-radius: 5px;
   background-color: rgba(184, 172, 162, 0.301);
@@ -509,6 +520,7 @@ body {
   top: 200px;
   left: 80px;
   border-radius: 5px;
+  opacity: 75%;
 }
 
 .user-page .p-2 {
@@ -518,6 +530,7 @@ body {
   right: 80px;
   top: 240px;
   z-index: -3;
+  opacity: 75%;
 }
 
 .user-page .p-3 {
@@ -527,6 +540,7 @@ body {
   right: 200px;
   border-radius: 5px;
   z-index: -2;
+  opacity: 75%;
 }
 
 .user-page .p-4 {
@@ -537,6 +551,7 @@ body {
   top: 470px;
   border-radius: 5px;
   z-index: -1;
+  opacity: 75%;
 }
 
 .user-page .p-5 {
@@ -545,6 +560,7 @@ body {
   position: absolute;
   top: 600px;
   left: 30px;
+  opacity: 75%;
 }
 
 .user-page h1 {

@@ -39,6 +39,14 @@ function Cart() {
     .catch(error => console.log(error))
   }
 
+  const removeItems = () => {
+    const c = window.confirm('Are you sure you want to empty your basket?')
+    if (c) {
+      Cookies.remove('cart')
+      .then(() => setCart([]))
+    } else {}
+  }
+
 
     return (
       <div className='cart-page'>
@@ -50,7 +58,10 @@ function Cart() {
           </div> : null
           ))}
         </div>
-        <button onClick={handleSubmit} disabled={!Cookies.get()['cart'] ? true : false}>Place an order <FontAwesomeIcon icon={faShoppingBag}/></button>
+        <div className='btns'>
+          <button onClick={handleSubmit} disabled={!Cookies.get()['cart'] ? true : false}>Place an order <FontAwesomeIcon icon={faShoppingBag}/></button>
+          <button onClick={removeItems} disabled={!Cookies.get()['cart'] ? true : false}>Remove items</button>
+        </div>
       </div>
     );
 }
