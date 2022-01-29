@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCloudMoon } from "@fortawesome/free-solid-svg-icons"
 import axios from "axios"
 import Cookies from "js-cookie"
 import React, { useContext, useEffect, useState } from "react"
@@ -10,7 +12,7 @@ function UserPage() {
     const [users, setUsers] = useState([])
     const [edit, setEdit] = useState('')
     const [email, setEmail] = useState('')
-    
+
     const [open, setOpen] = useState(false)
     const [user, setUser] = useState('')
     const [id, setId] = useState('')
@@ -88,13 +90,19 @@ function UserPage() {
     }
 
     return (
-        <div>
-            <h1>Uszanowanko {user}</h1>
-            <button onClick={handleLogout}>Logout</button>
-            <div>
+        <div className="user-page">
+            {/* <div className="p-1"></div> */}
+            <img className="p-1" src="https://i.pinimg.com/564x/4b/34/1f/4b341fde6f0e8699882c518623dce95f.jpg" alt="img"/>
+            <img className="p-2" src="https://i.pinimg.com/564x/74/a2/1a/74a21a7f3b2ddf08b317900a715c85d9.jpg" alt="img"/>
+            <img className="p-3" src="https://i.pinimg.com/564x/a3/79/a6/a379a61c17d181e77d24a311a0bb465a.jpg" alt="img"/>
+            <img className="p-4" src="https://i.pinimg.com/564x/24/72/ac/2472ac26df7ce989251361db3067f253.jpg" alt="img"/>
+            <img className="p-5" src="https://i.pinimg.com/564x/14/cf/73/14cf735b95bb45032d2caa2c8ad14023.jpg" alt="img"/>
+            <div className="content">
+                <h1 className="user-header">Hello, {user} <FontAwesomeIcon icon={faCloudMoon} /> </h1>
+                <button onClick={handleLogout}>Logout</button>
                 <button onClick={editEmail}>EDIT EMAIL</button>
                 {open ? <form onSubmit={e => handleEditEmail(e)}><input defaultValue={user} type='text' onChange={(e) => setUserEmail(e.target.value)} /><button type="submit">OK</button></form> : null}
-                <button onClick={handleUserDelete}> DELETE ACCOUNT</button>
+                <button onClick={handleUserDelete}>DELETE ACCOUNT</button>
             </div>
             <div>
                 {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? 

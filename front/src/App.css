@@ -502,4 +502,86 @@ body {
   font-size: 20px;
   text-transform: uppercase;
 }
+
+.user-page .p-1 {
+  height: 350px;
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  border-radius: 5px;
+}
+
+.user-page .p-2 {
+  height: 400px;
+  border-radius: 5px;
+  position: absolute;
+  right: 80px;
+  top: 240px;
+  z-index: -3;
+}
+
+.user-page .p-3 {
+  height: 350px;
+  position: absolute;
+  top: 500px;
+  right: 200px;
+  border-radius: 5px;
+  z-index: -2;
+}
+
+.user-page .p-4 {
+  height: 300px;
+  position: absolute;
+  border-radius: 5px;
+  left: 290px;
+  top: 470px;
+  border-radius: 5px;
+  z-index: -1;
+}
+
+.user-page .p-5 {
+  border-radius: 5px;
+  height: 280px;
+  position: absolute;
+  top: 600px;
+  left: 30px;
+}
+
+.user-page h1 {
+  margin-bottom: 100px;
+  font-size: 50px;
+}
+
+.user-page button {
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  padding: 20px 35px;
+  background: none;
+  height: 100%;
+  width: 350px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(184, 172, 162, 0.301);
+}
+
+.user-page .content {
+  border: 1.7px solid rgba(85, 75, 66, 0.616);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+  margin: 10px auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+  padding-bottom: 40px;
+  z-index: 1;
+  border-radius: 8px;
+}
 /*# sourceMappingURL=App.css.map */

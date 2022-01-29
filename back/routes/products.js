@@ -71,6 +71,20 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+router.patch('/:id', async (req, res) => {
+  const update = req.body;
+  const id = req.params.id;
+  try {
+    const product = await Product.findByIdAndUpdate(id, update, {new: true})
+    if (!product) {
+      return res.status(404).send()
+    }
+    res.send(product)
+  } catch (err) {
+    res.send(err)
+  }
+});
+
 router.delete('/:id', async (req, res) => {
   try {
     const id = req.params.id;
