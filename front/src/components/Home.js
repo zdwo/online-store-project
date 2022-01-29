@@ -12,15 +12,17 @@ function Home() {
         const es = new EventSource("http://localhost:5000/promos");
         
         es.addEventListener("message", function(event) {
-            const lastElement = document.getElementById("promo").querySelector("li")
-            const newElement = document.createElement("li");
-            const eventList = document.getElementById("promo");
-        
-            newElement.textContent = event.data;
-            if (eventList) {
-            if (!lastElement)  {eventList.appendChild(newElement)}
-            else {eventList.replaceChild(newElement, lastElement)}
+            if (document.getElementById("promo")) {
+                const lastElement = document.getElementById("promo").querySelector("li")
+                const newElement = document.createElement("li");
+                const eventList = document.getElementById("promo");  
+                newElement.textContent = event.data;
+                if (eventList) {
+                if (!lastElement)  {eventList.appendChild(newElement)}
+                else {eventList.replaceChild(newElement, lastElement)}
+                } else {} 
             } else {}
+            
         });
     });
 
