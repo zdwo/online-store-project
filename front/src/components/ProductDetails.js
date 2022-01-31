@@ -49,7 +49,8 @@ const Details = () => {
         const c = window.confirm('Are you sure ypu want to delete this product?')
         if (c) {
             axios.delete(`http://localhost:5000/products/${product._id}`)
-            .then(() => history.push('/'))
+            .then(() => alert('Product deleted.'))
+            .then(() => history.push(`/${product.category}`))
             .catch(err => console.log(err))
         } else {}
     }

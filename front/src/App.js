@@ -22,6 +22,7 @@ import Edit from './components/EditProduct';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import NewsletterAdmin from './components/Newsletter-admin';
+import AddProduct from './components/AddProduct'
 
 library.add(faShoppingBasket);
 
@@ -70,6 +71,7 @@ function App() {
                 <RouteProtected path='/user' component={UserPage} />
                 <RouteReg path='/signin' component={Signin} />
                 <RouteReg path='/signup' component={Signup} />
+                <Route path='/add' component={AddProduct} />
                 <Route path='/clothing' component={Clothing}/>
                 <Route path='/jewelery' component={Jewelery}/>
                 <Route path='/beauty' component={Makeup}/>

@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 router.get('/makeup', async (req, res) => {
   try {
-    const result = await Product.find({category: "makeup"});
+    const result = await Product.find({category: "beauty"});
     return res.json(result);
   } catch (err) {
     return res.status(500).send(err);

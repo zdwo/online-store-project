@@ -43,7 +43,7 @@ function Cart() {
     const c = window.confirm('Are you sure you want to empty your basket?')
     if (c) {
       Cookies.remove('cart')
-      .then(() => setCart([]))
+      setCart([])
     } else {}
   }
 
