@@ -12,12 +12,58 @@ const session = require('express-session')
 const SseChannel = require('sse-channel');
 const adChannel = new SseChannel();
 
+const http = require('http');
+const mqtt = require('mqtt');
+const socketIo = require('socket.io');
+
+const server = http.createServer(app);
+const io = socketIo(server, {
+    cors: {
+        origin: 'http://localhost:3000',
+    }
+});
+
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,PATCH,DELETE");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
+});
+
+const MQTTclient = mqtt.connect('ws://localhost:8082/mqtt');
+
+server.listen(4001, () => console.log('Socket listening on port 4001'));
+
+const users = {};
+io.on("connection", client => {
+  MQTTclient.subscribe('chat');
+
+  client.on("username", username => {
+    const user = {
+      name: username,
+      id: client.id
+    };
+    users[client.id] = user;
+    io.emit("connected", user);
+    io.emit("users", Object.values(users));
+  });
+
+  client.on("send", message => {
+    MQTTclient.publish('chat', message);
+  });
+
+  MQTTclient.on("message", (topic, message) => {
+		client.emit("message", {
+      text: message.toString()
+    });
+  });
+
+  client.on("disconnect", () => {
+    const username = users[client.id];
+    delete users[client.id];
+    io.emit("disconnected", client.id);
+  });
 });
 
 app.use(express.json());

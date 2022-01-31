@@ -17,10 +17,13 @@
     "express": "^4.17.2",
     "express-session": "^1.17.2",
     "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
     "mongoose": "^6.1.7",
     "mqtt": "^4.3.4",
     "nodemon": "^2.0.14",
     "paho-mqtt": "^1.1.0",
-    "sse-channel": "^4.0.0"
+    "socket.io": "^4.4.1",
+    "sse-channel": "^4.0.0",
+    "ws": "^8.4.2"
   }
 }

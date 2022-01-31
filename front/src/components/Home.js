@@ -56,6 +56,10 @@ function Home() {
         </button>
         {open ? <Chat /> : null}
         {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? <Link to='/add'><button className="add-prod">+ ADD PRODUCT</button></Link> : null )}
+        <div id="chat-circle" class="btn btn-raised">
+        <div id="chat-overlay"></div>
+		    OPEN CHAT
+	    </div>
         <Newsletter />
     </div>
     )

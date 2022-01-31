@@ -8,7 +8,7 @@ import 'animate.css'
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faShoppingBasket, faUser, faEnvelope, faEnvelopeOpen, faEnvelopeOpenText } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBasket, faUser, faEnvelopeOpenText } from "@fortawesome/free-solid-svg-icons";
 import UserPage from './components/UserPage';
 import Auth from './utils/Auth'
 import { isSignedIn } from './components/auth-api';
@@ -23,6 +23,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import NewsletterAdmin from './components/Newsletter-admin';
 import AddProduct from './components/AddProduct'
+import Chat from './components/Chat';
 
 library.add(faShoppingBasket);
 
@@ -37,9 +38,13 @@ const RouteProtected = ({component: Component, ...rest}) => {
   return <Route {...rest} render={props => auth.auth ? <Component {...props} /> : <Redirect to='/signin' />} />
 }
 
+
+
+
 function App() {
 
-  const [auth, setAuth] = useState(false)
+  const [auth, setAuth] = useState(false);
+
 
   const readSession = async () => {
     const res = await isSignedIn()
@@ -57,15 +62,15 @@ function App() {
 
   return (
     <div>
-      {/* <Connector brokerUrl="wss://test.mosquitto.org:1884"> */}
-        {/* <Status /> */}
-      {/* </Connector> */}
       <Auth.Provider value={{auth, setAuth}}>
         <Router>
           <Navbar />
           <Switch>
                 <Route exact path='/' component={Home}/>
                 <Route exact path='/promos' component={Promos}/>
+                <Route path='/chat'>
+                  <Chat/>
+                </Route>
                 <Route path='/cart' component={Cart} />
                 <Route path='/newsletter' component={NewsletterAdmin}/>
                 <RouteProtected path='/user' component={UserPage} />
@@ -77,6 +82,7 @@ function App() {
                 <Route path='/beauty' component={Makeup}/>
                 <Route path='/:id/edit' component={Edit} />
                 <Route path='/:id' component={Details}/>
+                
           </Switch>
         </Router>
       </Auth.Provider>
