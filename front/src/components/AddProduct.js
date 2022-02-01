@@ -29,8 +29,10 @@ function AddProduct() {
                 <input name="description" type='text' placeholder="Description" onChange={e => setDescription(e.target.value)}/>
                 <input name="category" type='text' placeholder='Category' onChange={e => setCategory(e.target.value)}/>
                 <input name='picture' type='url' placeholder="Picture url address" onChange={e => setPicture(e.target.value)}/> 
-                <button type="submit">ADD</button>
-                <button onClick={() => history.push('/')}>CANCEL</button>
+                <div className="add-btn">
+                    <button type="submit">ADD</button>
+                    <button onClick={() => history.push('/')}>CANCEL</button>
+                </div>
             </form>
         </div>
     )

@@ -67,18 +67,19 @@ const Details = () => {
     return (
 
           <div className="product-list">
-               <div key={product._id}>
-                         <img className="product-pic" src={product.picture} alt="img"/>
-                         {open ? <input defaultValue={product.picture} type='url' onChange={(e) => setImg(e.target.value)}/> : null}
-                         <p className="product-name">{product.name}</p>
-                         {open ? <input defaultValue={product.name} type='text' onChange={(e) => setName(e.target.value)}/> : null}
-                         {open ? <button type='submit' onClick={editProd}>OK</button> : null}
-                         {open ? <button onClick={() => setOpen(false)}>CANCEL</button> : null}
-                         <p>{'\u2605'} {product.rating}</p>
-                         <p>{product.prize}pln</p>
-                         <button onClick={updateCart(product.name)}>ADD TO CART</button>
-                         {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? <button onClick={() => setOpen(true)}>EDIT</button> : null)}
-                         {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? <button onClick={delProduct}>DELETE</button> : null)}
+               <div className="details" key={product._id}>
+                        <div className="img-edit">
+                            <img className="product-pic" src={product.picture} alt="img"/>
+                            {open ? <input className="img-inp" defaultValue={product.picture} type='url' onChange={(e) => setImg(e.target.value)}/> : null}
+                        </div>
+                         <div className="details-cont">
+                            <p className="product-name">{product.name}</p>
+                            {open ? <input defaultValue={product.name} type='text' onChange={(e) => setName(e.target.value)}/> : null}
+                            <p>{product.prize}pln</p>
+                            <button onClick={updateCart(product.name)}>ADD TO CART</button>
+                            {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? !open ? <button onClick={() => setOpen(true)}>EDIT</button> : <button type='submit' onClick={editProd}>OK</button> : null)}
+                            {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? !open ? <button onClick={delProduct}>DELETE</button> : <button onClick={() => setOpen(false)}>CANCEL</button> : null)}
+                         </div>
                </div>
         </div>
     )

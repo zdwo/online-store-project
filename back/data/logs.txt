@@ -43,3 +43,5 @@
 | LOGIN | admin@gmail.com | Tue Feb 01 2022 18:09:16 GMT+0100 (czas środkowoeuropejski standardowy) |
 | LOGOUT | admin@gmail.com | Tue Feb 01 2022 18:10:55 GMT+0100 (czas środkowoeuropejski standardowy) |
 | LOGIN | admin@gmail.com | Tue Feb 01 2022 18:21:42 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGOUT | undefined | Tue Feb 01 2022 19:29:17 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGIN | admin@gmail.com | Tue Feb 01 2022 19:36:31 GMT+0100 (czas środkowoeuropejski standardowy) |

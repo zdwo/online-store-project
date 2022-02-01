@@ -6,8 +6,6 @@
 body {
     background: #efefef;
     height: 100%;
-    // background: rgb(125,146,253);
-    // background: radial-gradient(circle, rgba(125,146,253,1) 0%, rgba(255,194,207,1) 100%);
 }
 
 .nav {
@@ -16,7 +14,6 @@ body {
     align-items: center;
     font-size: 30px;
     display: flex;
-    // justify-content: space-between;
     gap: 40px;
     background-color: #efefef;
     padding: 10px 20px;
@@ -57,9 +54,8 @@ body {
 }
 
 .home-photo-cont {
-    background: white;  /* fallback for old browsers */
+    background: white;
     background: linear-gradient(rgba(219, 218, 218, 0.493), rgba(90, 81, 68, 0.342)), url('https://media.istockphoto.com/photos/beige-tshirt-mockup-template-on-wooden-hanger-picture-id1269732404?k=20&m=1269732404&s=612x612&w=0&h=WtAH3-DYwi0t1YW6ZwJFCSF7pjK1JIBukO9VJ3DXaIA=');
-    // background: linear-gradient(rgba(255, 255, 255, 0.493), rgba(201, 186, 255, 0.342)), url("./images/photo-1556741533-6e6a62bd8b49.jpg") 0 -55px; 
     background-size: 100%;
     filter: blur(2.5px);
     height: 700px;
@@ -97,7 +93,6 @@ body {
 
 .add-prod {
     width: 95.7%;
-    // margin-left: auto;
     margin: 30px;
     cursor: pointer;
     padding: 20px;
@@ -107,6 +102,119 @@ body {
     border: none;
     border-radius: 5px;
     background-color: rgba(184, 172, 162, 0.301);
+}
+
+.add-form {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    width: 70%;
+    margin: 70px auto;
+    input {
+        width: 100%;
+        border: 0;
+        border-bottom: 2px solid rgb(121, 111, 104);
+        outline: 0;
+        font-size: 20px;
+        color: black;
+        padding: 7px 0;
+        background: transparent;
+        transition: border-color 0.2s;
+    }
+    .add-btn {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        button {
+            cursor: pointer;
+            padding: 15px 10px;
+            background: none;
+            width: 100%;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(184, 172, 162, 0.301);
+        }
+    }
+}
+
+.details {
+    display: flex;
+    gap: 200px;
+    input {
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 7px;
+        background: none;
+        font-size: 15px;
+    }
+    img {
+        height: 700px;
+    }
+    .img-edit {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .details-cont {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        font-family: 'Casta';
+        .product-name {
+            font-size: 20px;
+        }
+        button {
+            align-items: center;
+            background-color: #efefef;
+            border: 2px solid #70654f33;
+            border-radius: 8px;
+            box-sizing: border-box;
+            color: #111;
+            cursor: pointer;
+            display: flex;
+            font-size: 18px;
+            height: 50px;
+            justify-content: center;
+            line-height: 24px;
+            width: 250px;
+            padding: 0 25px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+        button:after {
+            background-color: #70654f;
+            opacity: 20%;
+            border-radius: 8px;
+            content: "";
+            display: block;
+            height: 50px;
+            left: 0;
+            width: 100%;
+            position: absolute;
+            top: -5px;
+            transform: translate(8px, 8px);
+            transition: transform .2s ease-out;
+            z-index: -1;
+          }
+          
+          button:hover:after {
+            transform: translate(0, 3px);
+          }
+          
+          button:active {
+            background-color: #ffdeda;
+            outline: 0;
+          }
+          
+          button:hover {
+            outline: 0;
+          }
+    }
 }
 
 .product-list {
@@ -394,12 +502,6 @@ body {
 }
 
 .user-page {
-    // display: flex;
-    // flex-direction: column;
-    // width: 50%;
-    // margin: 10px auto;
-    // align-items: center;
-    // gap: 20px;
     .p-1 {
         height: 350px;
         position: absolute;
