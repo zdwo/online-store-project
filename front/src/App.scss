@@ -484,18 +484,20 @@ body {
         background-color: rgb(245, 245, 245);
         margin-bottom: 10px;
         border-radius: 5px;
+        width: 280px;
         .chat-inp {
             padding: 10px;
             border: none;
             border-radius: 5px 0 0 5px;
+            width: 200px;
         }
         button {
             color: #2b5293;
             cursor: pointer;
             background: none;
             border: none;
-            font-size: 20px;
-            padding-right: 10px;
+            font-size: 17px;
+            padding-left: 15px;
         }
         .active {
             // border-bottom: 1px solid black;
@@ -525,25 +527,43 @@ body {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            div {
-                div {
+            overflow-y: scroll;
+            .message {
+                .user {
                     font-weight: 500;
                 }
-                background-color: #97b5e9;
-                width: 150px;
+                .text {
+                    border-radius: 5px;
+                    background-color: #97b5e9;
+                    width: 100px;
+                    word-wrap: break-word;
+                    padding: 5px 10px;
+                }
             }
-            div:not(.admin) {
+            .message:not(.admin) {
+                .text {
+                    background-color: #a6bce4;
+                }
                 align-self: flex-end;
+                text-align: right;
             }
             .admin {
                 align-self: flex-start;
             }
-            // div.admin {
-            //     background-color: blue;
-            //     align-self: flex-start;
-            //     color: cadetblue;
-            //     // width: 100%;
-            // }
+        }
+        .chat-form {
+            display: flex;
+            input {
+                border: 1px solid grey;
+                // background-color: #dfdede;
+                border-radius: 0 5px 0 5px;
+                padding: 0 10px;
+                font-size: 15px;
+            }
+            button {
+                font-size: 20px;
+                margin: 5px;
+            }
         }
     }
     .chat-btn {

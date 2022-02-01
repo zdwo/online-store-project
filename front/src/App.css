@@ -626,12 +626,14 @@ body {
   background-color: whitesmoke;
   margin-bottom: 10px;
   border-radius: 5px;
+  width: 280px;
 }
 
 .chat-cont .chat-window .chat-inp {
   padding: 10px;
   border: none;
   border-radius: 5px 0 0 5px;
+  width: 200px;
 }
 
 .chat-cont .chat-window button {
@@ -639,8 +641,8 @@ body {
   cursor: pointer;
   background: none;
   border: none;
-  font-size: 20px;
-  padding-right: 10px;
+  font-size: 17px;
+  padding-left: 15px;
 }
 
 .chat-cont .chat-window .active {
@@ -684,25 +686,52 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 15px;
+  overflow-y: scroll;
 }
 
-.chat-cont .chat-window .messages div {
-  background-color: #97b5e9;
-  width: 150px;
-}
-
-.chat-cont .chat-window .messages div div {
+.chat-cont .chat-window .messages .message .user {
   font-weight: 500;
 }
 
-.chat-cont .chat-window .messages div:not(.admin) {
+.chat-cont .chat-window .messages .message .text {
+  border-radius: 5px;
+  background-color: #97b5e9;
+  width: 100px;
+  word-wrap: break-word;
+  padding: 5px 10px;
+}
+
+.chat-cont .chat-window .messages .message:not(.admin) {
   -ms-flex-item-align: end;
       align-self: flex-end;
+  text-align: right;
+}
+
+.chat-cont .chat-window .messages .message:not(.admin) .text {
+  background-color: #a6bce4;
 }
 
 .chat-cont .chat-window .messages .admin {
   -ms-flex-item-align: start;
       align-self: flex-start;
+}
+
+.chat-cont .chat-window .chat-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.chat-cont .chat-window .chat-form input {
+  border: 1px solid grey;
+  border-radius: 0 5px 0 5px;
+  padding: 0 10px;
+  font-size: 15px;
+}
+
+.chat-cont .chat-window .chat-form button {
+  font-size: 20px;
+  margin: 5px;
 }
 
 .chat-cont .chat-btn {
