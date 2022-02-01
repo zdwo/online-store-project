@@ -35,3 +35,11 @@
 | LOGOUT | user11@gmail.com | Mon Jan 31 2022 14:02:24 GMT+0100 (czas środkowoeuropejski standardowy) |
 | LOGIN | admin@gmail.com | Mon Jan 31 2022 14:02:35 GMT+0100 (czas środkowoeuropejski standardowy) |
 | LOGOUT | admin@gmail.com | Mon Jan 31 2022 14:04:31 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGIN | admin@gmail.com | Tue Feb 01 2022 18:03:47 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGOUT | admin@gmail.com | Tue Feb 01 2022 18:07:02 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGIN | user@gmail.com | Tue Feb 01 2022 18:08:13 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGOUT | innyuser@gmail.com | Tue Feb 01 2022 18:08:57 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGOUT | del@gmail.com | Tue Feb 01 2022 18:09:09 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGIN | admin@gmail.com | Tue Feb 01 2022 18:09:16 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGOUT | admin@gmail.com | Tue Feb 01 2022 18:10:55 GMT+0100 (czas środkowoeuropejski standardowy) |
+| LOGIN | admin@gmail.com | Tue Feb 01 2022 18:21:42 GMT+0100 (czas środkowoeuropejski standardowy) |

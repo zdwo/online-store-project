@@ -4,3 +4,9 @@
 | ORDER NO 61f5ce52168f29852580b1a4 | user1@gmail.com | eyeshadow palette,White Gold Earings,Gold chain necklace,Earings with hand charms | Sun Jan 30 2022 00:31:30 GMT+0100 (czas środkowoeuropejski standardowy) |
 | ORDER NO 61f5cec2168f29852580c7bc | user1@gmail.com | White Gold Earings,Gold chain necklace,Earings with hand charms,gold chain top | Sun Jan 30 2022 00:33:22 GMT+0100 (czas środkowoeuropejski standardowy) |
 | ORDER NO 61f7de9678ff31b9e9b14087 | user11@gmail.com | White Gold Earings,Gold chain necklace,Eyeliner | Mon Jan 31 2022 14:05:26 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 61f968e139ade00e57874c1a | guest | Pearly lip balm,Lilac nail polish,Gold chain necklace,Gold charms necklace,Knitted sweater | Tue Feb 01 2022 18:07:45 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 61f9691339ade00e57875958 | user@gmail.com | Black leather top,Denim mini dress | Tue Feb 01 2022 18:08:35 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 61f96e81b8853aef16a5b874 | admin@gmail.com | Gold chain necklace | Tue Feb 01 2022 18:31:45 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 61f96e86b8853aef16a5b9f0 | admin@gmail.com | Gold chain necklace,Gold chain necklace,Gold chain necklace | Tue Feb 01 2022 18:31:51 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 61f96e8db8853aef16a5bb6d | admin@gmail.com | Knitted sweater,Knitted sweater | Tue Feb 01 2022 18:31:57 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 61f96e92b8853aef16a5bc85 | admin@gmail.com | Lilac nail polish,Lilac nail polish | Tue Feb 01 2022 18:32:02 GMT+0100 (czas środkowoeuropejski standardowy) |

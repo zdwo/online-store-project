@@ -59,7 +59,7 @@ function UserPage() {
     }
 
     const editEmail = () => {
-        setOpen(true)
+        setOpen(!open)
     }
 
     const handleEditEmail = (e) => {
@@ -99,14 +99,14 @@ function UserPage() {
             <img className="p-5" src="https://i.pinimg.com/564x/14/cf/73/14cf735b95bb45032d2caa2c8ad14023.jpg" alt="img"/>
             <div className="content">
                 <h1 className="user-header">Hello, {user} <FontAwesomeIcon icon={faCloudMoon} /> </h1>
-                <button onClick={handleLogout}>Logout</button>
-                <button onClick={editEmail}>EDIT EMAIL</button>
-                {open ? <form onSubmit={e => handleEditEmail(e)}><input defaultValue={user} type='text' onChange={(e) => setUserEmail(e.target.value)} /><button type="submit">OK</button></form> : null}
-                <button onClick={handleUserDelete}>DELETE ACCOUNT</button>
+                <button className="user-btn" onClick={handleLogout}>Logout</button>
+                <button className="user-btn" onClick={editEmail}>EDIT EMAIL</button>
+                {open ? <form className="user-edit" onSubmit={e => handleEditEmail(e)}><input defaultValue={user} type='text' onChange={(e) => setUserEmail(e.target.value)} /><button type="submit">OK</button><button onClick={editEmail}>CANCEL</button></form> : null}
+                <button className="user-btn" onClick={handleUserDelete}>DELETE ACCOUNT</button>
             </div>
-            <div>
+            <div className="admin-orders">
                 {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? 
-                    <ul>
+                    <ul className="orders-list">
                         {orders.map(o => edit!==o._id ?
                         <li>
                             <p>{o._id} -- {o.user}</p>
@@ -115,12 +115,12 @@ function UserPage() {
                             <button onClick={e => handleDel(o._id)}>DELETE</button>
                         </li> : 
                         <li>
-                            <p>{o._id}</p>
+                            <p>{o._id} -- <input defaultValue={o.user} type="text" onChange={e => setEmail(e.target.value)} /></p>
                             <form onSubmit={(e) => handleSubmit(e, o._id)}>
-                                <input defaultValue={o.user} type="text" onChange={e => setEmail(e.target.value)} />
+                                {/* <input defaultValue={o.user} type="text" onChange={e => setEmail(e.target.value)} /> */}
                                 <ul>{o.products.map(p => <li>{p}</li>)}</ul>
-                                <button type="submit">OK</button>
-                                <button onClick={e => editButton('')}>CANCEL</button>
+                                <button className="order-btn" type="submit">OK</button>
+                                <button className="order-btn" onClick={e => editButton('')}>CANCEL</button>
                             </form>
                         </li>
                         )}

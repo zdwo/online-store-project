@@ -33,17 +33,22 @@ function NewsletterAdmin() {
 
 
     return (
-        <div>
+        <div className="nl-admin">
             {rec.map(r => edit!==r._id ? 
-            <div>
+            <div className="nl-user">
                 <p>{r.email}</p>
-                <button onClick={e => editButton(r._id)}>EDIT</button>
-                <button onClick={e => handleDel(r._id)}>DELETE</button>
+                <div className="nl-btn">
+                    <button onClick={() => editButton(r._id)}>EDIT</button>
+                    <button onClick={() => handleDel(r._id)}>DELETE</button>
+                </div>
             </div> : 
             <div>
-                <form onSubmit={(e) => handleSubmit(e, r._id)}>
+                <form className="nl-user" onSubmit={(e) => handleSubmit(e, r._id)}>
                     <input defaultValue={r.email} type="text" onChange={e => setEmail(e.target.value)}/>
-                    <button type="submit">OK</button>
+                    <div className="nl-btn">
+                        <button type="submit">OK</button>
+                        <button onClick={() => editButton('')}>CANCEL</button>
+                    </div>
                 </form>
             </div>)}
         </div>

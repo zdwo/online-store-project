@@ -82,8 +82,10 @@ function Chat() {
                     </div>
                 </form>
             </div>
-        </div></div> : 
-        <div><input className="chat-inp" placeholder="What's your name?" name="username" type='text' onChange={e => setUsern(e.target.value)} /><button onClick={e=>setUsername(usern)}>OK</button></div>}
+        </div>
+        </div> : 
+        <div><input className="chat-inp" placeholder="What's your name?" name="username" type='text' onChange={e => setUsern(e.target.value)} /><button onClick={e=>setUsername(usern)}>OK</button></div>
+        }
   </div>
     )
 }
