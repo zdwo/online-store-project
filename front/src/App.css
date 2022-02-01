@@ -115,6 +115,19 @@ body {
   text-decoration: none;
 }
 
+.add-prod {
+  width: 95.7%;
+  margin: 30px;
+  cursor: pointer;
+  padding: 20px;
+  background: none;
+  height: 100%;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(184, 172, 162, 0.301);
+}
+
 .product-list {
   padding: 20px;
   display: -webkit-box;
@@ -599,5 +612,109 @@ body {
   padding-bottom: 40px;
   z-index: 1;
   border-radius: 8px;
+}
+
+.chat-cont {
+  position: absolute;
+  bottom: 30px;
+  z-index: 999;
+  position: fixed;
+  right: 30px;
+}
+
+.chat-cont .chat-window {
+  background-color: whitesmoke;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.chat-cont .chat-window .chat-inp {
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.chat-cont .chat-window button {
+  color: #2b5293;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 20px;
+  padding-right: 10px;
+}
+
+.chat-cont .chat-window .active {
+  padding: 0 20px;
+  gap: 10px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.chat-cont .chat-window .active .icon {
+  font-size: 35px;
+  color: #6db96d;
+}
+
+.chat-cont .chat-window .active-list {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 10px 5px;
+  margin: 0;
+  border-bottom: 1px solid black;
+}
+
+.chat-cont .chat-window .messages {
+  height: 250px;
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+}
+
+.chat-cont .chat-window .messages div {
+  background-color: #97b5e9;
+  width: 150px;
+}
+
+.chat-cont .chat-window .messages div div {
+  font-weight: 500;
+}
+
+.chat-cont .chat-window .messages div:not(.admin) {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.chat-cont .chat-window .messages .admin {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.chat-cont .chat-btn {
+  cursor: pointer;
+  background: none;
+  font-size: 50px;
+  padding: 20px;
+  border: none;
+  width: 97px;
+  border-radius: 50%;
+  background-color: #2b5193e7;
+  color: #efefef;
+  float: right;
 }
 /*# sourceMappingURL=App.css.map */

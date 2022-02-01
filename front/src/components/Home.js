@@ -1,3 +1,5 @@
+import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
@@ -54,11 +56,10 @@ function Home() {
         <button className="home-btn">
             <ul id="promo"></ul>
         </button>
-        {open ? <Chat /> : null}
         {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? <Link to='/add'><button className="add-prod">+ ADD PRODUCT</button></Link> : null )}
-        <div id="chat-circle" class="btn btn-raised">
-        <div id="chat-overlay"></div>
-		    OPEN CHAT
+        <div className="chat-cont">
+        {open ? <div className="chat-window"><Chat /></div> : null }
+		    <button onClick={openChat} className="chat-btn"><FontAwesomeIcon icon={faCommentDots} /></button>
 	    </div>
         <Newsletter />
     </div>

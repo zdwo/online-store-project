@@ -37,7 +37,7 @@ server.listen(4001, () => console.log('Socket listening on port 4001'));
 
 const users = {};
 io.on("connection", client => {
-  MQTTclient.subscribe('chat');
+  MQTTclient.subscribe('chat/+');
 
   client.on("username", username => {
     const user = {
@@ -49,13 +49,14 @@ io.on("connection", client => {
     io.emit("users", Object.values(users));
   });
 
-  client.on("send", message => {
-    MQTTclient.publish('chat', message);
+  client.on("send", (username, message) => {
+    MQTTclient.publish(`chat/${username}`, message);
   });
 
   MQTTclient.on("message", (topic, message) => {
 		client.emit("message", {
-      text: message.toString()
+      text: message.toString(),
+      username: topic.slice(5)
     });
   });
 
