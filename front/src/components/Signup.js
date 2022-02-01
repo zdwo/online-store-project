@@ -5,7 +5,7 @@ import Auth from '../utils/Auth'
 import { signup } from './auth-api'
 
 
-export default function Signup() {
+function Signup() {
 
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
@@ -48,3 +48,4 @@ export default function Signup() {
   )
 }
 
+export default Signup;

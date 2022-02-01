@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import Cookies from 'js-cookie';
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Makeup = () => {
 
-    const history = useHistory();
     const [products, setProducts] = useState([])
 
     useEffect(() => {
@@ -41,7 +39,7 @@ const Makeup = () => {
           <div className="product-list">
                {products.map(product => <div key={product._id} className="product">
                         <Link className="link product" to={`/${product._id}`}><img className="product-pic" src={product.picture} alt="img"/>
-                         <p className="product-name" onClick={() => history.push(`/${product.id}`)}>{product.name}</p>
+                         <p className="product-name">{product.name}</p>
                          {/* <p>{'\u2605'} {product.rating}</p> */}
                          </Link>
                          <button onClick={updateCart(product.name)}>ADD TO CART</button>

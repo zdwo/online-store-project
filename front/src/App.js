@@ -18,7 +18,6 @@ import Makeup from './components/Makeup';
 import Jewelery from './components/Jewelery';
 import Details from './components/ProductDetails'
 import Promos from './components/Promos';
-import Edit from './components/EditProduct';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import NewsletterAdmin from './components/Newsletter-admin';
@@ -59,7 +58,6 @@ function App() {
 
 
 
-
   return (
     <div>
       <Auth.Provider value={{auth, setAuth}}>
@@ -80,7 +78,6 @@ function App() {
                 <Route path='/clothing' component={Clothing}/>
                 <Route path='/jewelery' component={Jewelery}/>
                 <Route path='/beauty' component={Makeup}/>
-                <Route path='/:id/edit' component={Edit} />
                 <Route path='/:id' component={Details}/>
                 
           </Switch>

@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import Cookies from 'js-cookie';
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Jewelery = () => {
 
-    const history = useHistory();
     const [products, setProducts] = useState([])
 
     useEffect(() => {

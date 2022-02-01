@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import socketIOClient, { io } from 'socket.io-client'
+import Cookies from "js-cookie";
 
 const socket = io('http://127.0.0.1:4001', {
   transports: ['websocket', 'polling']
@@ -16,6 +16,12 @@ function Chat() {
     const [messages, setMessages] = useState([]);
     const [users, setUsers] = useState([])
     const [message, setMessage] = useState('')
+
+    // useEffect(() => {
+    //     if (Cookies.get()['chat-user']) {
+    //         setUsername(Cookies.get()['chat-user'])
+    //     } else {}
+    // }, [username])
 
     useEffect(() => {
 
@@ -54,6 +60,11 @@ function Chat() {
         setMessage('');
     };
 
+    const handleUsername = () => {
+        // Cookies.set('chat-user', usern)
+        setUsername(usern)
+    }
+
     return (
     <div>
         {username ? <div>
@@ -84,7 +95,7 @@ function Chat() {
             </div>
         </div>
         </div> : 
-        <div><input className="chat-inp" placeholder="What's your name?" name="username" type='text' onChange={e => setUsern(e.target.value)} /><button onClick={e=>setUsername(usern)}>OK</button></div>
+        <div><input className="chat-inp" placeholder="What's your name?" name="username" type='text' onChange={e => setUsern(e.target.value)} /><button onClick={handleUsername}>OK</button></div>
         }
   </div>
     )

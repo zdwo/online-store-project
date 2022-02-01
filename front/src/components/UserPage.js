@@ -34,6 +34,9 @@ function UserPage() {
         const e = Cookies.get()['user']
         setUser(e)
         users.map(u => u.email === e ? setId(u._id) : null)
+        if (!Cookies.get()['user']) {
+            auth.setAuth(false)
+        }
     }, [users])
 
 
@@ -82,6 +85,7 @@ function UserPage() {
     }
 
     const auth = useContext(Auth)
+
     const handleLogout = async () => {
         const e = Cookies.get()['user']
         const res = await signout({e})
@@ -91,7 +95,6 @@ function UserPage() {
 
     return (
         <div className="user-page">
-            {/* <div className="p-1"></div> */}
             <img className="p-1" src="https://i.pinimg.com/564x/4b/34/1f/4b341fde6f0e8699882c518623dce95f.jpg" alt="img"/>
             <img className="p-2" src="https://i.pinimg.com/564x/74/a2/1a/74a21a7f3b2ddf08b317900a715c85d9.jpg" alt="img"/>
             <img className="p-3" src="https://i.pinimg.com/564x/a3/79/a6/a379a61c17d181e77d24a311a0bb465a.jpg" alt="img"/>
@@ -117,7 +120,6 @@ function UserPage() {
                         <li>
                             <p>{o._id} -- <input defaultValue={o.user} type="text" onChange={e => setEmail(e.target.value)} /></p>
                             <form onSubmit={(e) => handleSubmit(e, o._id)}>
-                                {/* <input defaultValue={o.user} type="text" onChange={e => setEmail(e.target.value)} /> */}
                                 <ul>{o.products.map(p => <li>{p}</li>)}</ul>
                                 <button className="order-btn" type="submit">OK</button>
                                 <button className="order-btn" onClick={e => editButton('')}>CANCEL</button>
