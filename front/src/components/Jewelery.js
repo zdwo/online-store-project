@@ -40,7 +40,6 @@ const Jewelery = () => {
                {products.map(product => <div key={product._id} className="product">
                         <Link className="link product" to={`/${product._id}`}><img className="product-pic" src={product.picture} alt="img"/>
                          <p className="product-name">{product.name}</p>
-                         {/* <p>{'\u2605'} {product.rating}</p> */}
                          </Link>
                          <button onClick={updateCart(product.name)}>ADD TO CART</button>
                </div>)} 

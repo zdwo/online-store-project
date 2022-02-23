@@ -11,3 +11,10 @@
 | ORDER NO 61f96e8db8853aef16a5bb6d | admin@gmail.com | Knitted sweater,Knitted sweater | Tue Feb 01 2022 18:31:57 GMT+0100 (czas środkowoeuropejski standardowy) |
 | ORDER NO 61f96e92b8853aef16a5bc85 | admin@gmail.com | Lilac nail polish,Lilac nail polish | Tue Feb 01 2022 18:32:02 GMT+0100 (czas środkowoeuropejski standardowy) |
 | ORDER NO 61f988069dee1b692240bb08 | user@gmail.com | Riviera body scrub,Lilac nail polish,Pearly lip balm,Gold chain necklace | Tue Feb 01 2022 20:20:38 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 61fa753cba129641a53c7c5c | guest | Riviera body scrub,Gold chain necklace | Wed Feb 02 2022 13:12:45 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 621517259e118156e84bbc69 | user@gmail.com | Gold chain necklace (2),Gold charms necklace (1) | Tue Feb 22 2022 18:02:29 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 621517509e118156e84bbc6f | user@gmail.com | MELO peeling (1),BOGNA SKIN Lila Mask (1),Knitted midi dress (2) | Tue Feb 22 2022 18:03:12 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 621519a79e118156e84c08cc | user@gmail.com | Gold chain necklace (2),Hand charm earings (1) | Tue Feb 22 2022 18:13:11 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 62151b409e118156e84c8eae | guest | Hand charm earings (1),MELO peeling (2),KIRESKIN Moisturizer (1) | Tue Feb 22 2022 18:20:00 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 62151b919e118156e84cba4b | user@gmail.com | Loose trousers (2),Knitted sweater (1) | Tue Feb 22 2022 18:21:21 GMT+0100 (czas środkowoeuropejski standardowy) |
+| ORDER NO 62151cda9e118156e84cf69c | guest | Knitted sweater (1) | Tue Feb 22 2022 18:26:50 GMT+0100 (czas środkowoeuropejski standardowy) |

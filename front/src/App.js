@@ -5,7 +5,7 @@ import Cart from './components/Cart';
 import Signup from './components/Signup';
 import logo from './logos/cool-logos.jpeg'; 
 import 'animate.css'
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faShoppingBasket, faUser, faEnvelopeOpenText } from "@fortawesome/free-solid-svg-icons";
@@ -23,17 +23,18 @@ import axios from 'axios';
 import NewsletterAdmin from './components/Newsletter-admin';
 import AddProduct from './components/AddProduct'
 import Chat from './components/Chat';
+import MobileMenu from './components/MobileMenu';
 
 library.add(faShoppingBasket);
 
 
 const RouteReg = ({component: Component, ...rest}) => {
-  const auth = React.useContext(Auth)
+  const auth = useContext(Auth)
   return <Route {...rest} render={props => !auth.auth ? <Component {...props} /> : <Redirect to='/user' />} />
 }
 
 const RouteProtected = ({component: Component, ...rest}) => {
-  const auth = React.useContext(Auth)
+  const auth = useContext(Auth)
   return <Route {...rest} render={props => auth.auth ? <Component {...props} /> : <Redirect to='/signin' />} />
 }
 
@@ -65,6 +66,9 @@ function App() {
           <Navbar />
           <Switch>
                 <Route exact path='/' component={Home}/>
+                <Route path='/clothing' component={Clothing}/>
+                <Route path='/jewelery' component={Jewelery}/>
+                <Route path='/beauty' component={Makeup}/>
                 <Route exact path='/promos' component={Promos}/>
                 <Route path='/chat'>
                   <Chat/>
@@ -75,11 +79,10 @@ function App() {
                 <RouteReg path='/signin' component={Signin} />
                 <RouteReg path='/signup' component={Signup} />
                 <Route path='/add' component={AddProduct} />
-                <Route path='/clothing' component={Clothing}/>
+                {/* <Route path='/clothing' component={Clothing}/>
                 <Route path='/jewelery' component={Jewelery}/>
-                <Route path='/beauty' component={Makeup}/>
-                <Route path='/:id' component={Details}/>
-                
+                <Route path='/beauty' component={Makeup}/> */}
+                <Route path='/:id' component={Details}/>         
           </Switch>
         </Router>
       </Auth.Provider>
@@ -111,20 +114,23 @@ function Navbar() {
 
   return (
     <div className="nav">
-      <img src={logo} alt="img"/>
-      <Link className='link' to="/">HOME</Link>
-      <div className="menu" onClick={handleClick}>MENU</div>
-      {open ? <div>
-        <ul className='menu-list'>
-          <li className="animate__animated animate__slideInLeft"><Link className='link' to='/beauty'>BEAUTY</Link></li>
-          <li className="animate__animated animate__slideInLeft"><Link className='link' to='/jewelery'>JEWELERY</Link></li>
-          <li className="animate__animated animate__slideInLeft"><Link className='link' to='/clothing'>CLOTHING</Link></li>
-        </ul>
-      </div> : null}
-      <div className='cart-icon'>
-        {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? <Link className='link' to='/newsletter'><FontAwesomeIcon icon={faEnvelopeOpenText}/></Link> : null)}
-        <Link className='link' to='/user'><FontAwesomeIcon icon={faUser} /></Link>
-        <Link className='link' to='/cart'><FontAwesomeIcon icon={faShoppingBasket} /></Link>
+      <Link className='link logo' to="/"><img src={logo} alt="img"/></Link>
+      <Link className='link home' to="/">HOME</Link>
+        <div className="menu" onClick={handleClick}>MENU</div>
+        {open ? <div>
+          <ul className='menu-list'>
+            <li className="animate__animated animate__slideInLeft"><Link className='link' to='/beauty'>BEAUTY</Link></li>
+            <li className="animate__animated animate__slideInLeft"><Link className='link' to='/jewelery'>JEWELERY</Link></li>
+            <li className="animate__animated animate__slideInLeft"><Link className='link' to='/clothing'>CLOTHING</Link></li>
+          </ul>
+        </div> : null}
+        <div className='cart-icon'>
+          {users.map(u => u.email === Cookies.get()['user'] && u.role==='admin' ? <Link className='link' to='/newsletter'><FontAwesomeIcon icon={faEnvelopeOpenText}/></Link> : null)}
+          <Link className='link' to='/user'><FontAwesomeIcon icon={faUser} /></Link>
+          <Link className='link' to='/cart'><FontAwesomeIcon icon={faShoppingBasket} /></Link>
+        </div>
+      <div className='mobile-menu'>
+        <MobileMenu users={users}/>
       </div>
     </div>
   );

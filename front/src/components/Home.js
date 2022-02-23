@@ -9,10 +9,8 @@ import Newsletter from "./Newsletter";
 
 function Home() {
 
-    const [products, setProducts] = useState([])
     const [open, setOpen] = useState(false)
     const [users, setUsers] = useState([])
-
 
     window.addEventListener("load", function (event) { 
         const es = new EventSource("http://localhost:5000/promos");
@@ -31,13 +29,8 @@ function Home() {
             
         });
     });
+    
 
-
-    useEffect(() => {
-        axios.get('http://localhost:5000/products')
-        .then(response => setProducts(response.data))
-        .catch(error => console.log(error))
-    },[])
 
     useEffect(() => {
         axios.get(`http://localhost:5000/user`)

@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 
 const Clothing = () => {
 
-    const history = useHistory();
+    // const history = useHistory();
     const [products, setProducts] = useState([])
 
     useEffect(() => {
         axios.get('http://localhost:5000/products/clothing')
         .then(response => setProducts(response.data))
         .catch(error => console.log(error))
-    },[])
+    }, [])
 
     const [cartP, setCartP] = useState(
         Cookies.get()['cart'] ? JSON.parse(Cookies.get()['cart']) : []
@@ -41,7 +41,7 @@ const Clothing = () => {
           <div className="product-list">
                {products.map(product => <div key={product._id} className="product">
                <Link className="link product" to={`/${product._id}`}><img className="product-pic" src={product.picture} alt="img"/>
-                         <p className="product-name" onClick={() => history.push(`/${product.id}`)}>{product.name}</p>
+                         <p className="product-name">{product.name}</p>
                          {/* <p>{'\u2605'} {product.rating}</p> */}
                          </Link>
                          <button onClick={updateCart(product.name)}>ADD TO CART</button>

@@ -102,7 +102,7 @@ function UserPage() {
             <img className="p-5" src="https://i.pinimg.com/564x/14/cf/73/14cf735b95bb45032d2caa2c8ad14023.jpg" alt="img"/>
             <div className="content">
                 <h1 className="user-header">Hello, {user} <FontAwesomeIcon icon={faCloudMoon} /> </h1>
-                <button className="user-btn" onClick={handleLogout}>Logout</button>
+                <button className="user-btn" onClick={handleLogout}>LOGOUT</button>
                 <button className="user-btn" onClick={editEmail}>EDIT EMAIL</button>
                 {open ? <form className="user-edit" onSubmit={e => handleEditEmail(e)}><input defaultValue={user} type='text' onChange={(e) => setUserEmail(e.target.value)} /><button type="submit">OK</button><button onClick={editEmail}>CANCEL</button></form> : null}
                 <button className="user-btn" onClick={handleUserDelete}>DELETE ACCOUNT</button>
